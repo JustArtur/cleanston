@@ -4,10 +4,8 @@ Rails.application.routes.draw do
 
   resources :products, only: %i[index show]
 
-  resources :cart_items, only: %i[create index update] do
-    member do
-      post :clear
-      post :add
-    end
+  resources :cart_items, only: %i[create index update destroy] do
   end
+
+  resources :orders, only: %i[create]
 end

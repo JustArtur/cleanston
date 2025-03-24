@@ -5,8 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items
-
-  def total_cart_price
-    cart_items.sum { |item| item.product.price * item.quantity }
-  end
+  has_many :orders
 end

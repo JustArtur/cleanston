@@ -1,0 +1,37 @@
+%h2.text-2xl.font-bold.mt-6.mb-4 User Cart
+
+- if @cart_items.any?
+  %table.w-full.text-left.border-collapse
+    %thead.bg-gray-100
+      %tr
+        %th.border-b.border-gray-300.py-2.px-4 Название
+        %th.border-b.border-gray-300.py-2.px-4 Кол-во
+        %th.border-b.border-gray-300.py-2.px-4 Цена
+        %th.border-b.border-gray-300.py-2.px-4 Всего
+        %th.border-b.border-gray-300.py-2.px-4 Действия
+
+    %tbody
+      - @cart_items.each do |item|
+        %tr
+          %td.border-b.border-gray-200.py-2.px-4= item.product.name
+          %td.border-b.border-gray-200.py-2.px-4= item.quantity
+          %td.border-b.border-gray-200.py-2.px-4= number_to_currency(item.product.price)
+          %td.border-b.border-gray-200.py-2.px-4= number_to_currency(item.product.price * item.quantity)
+          %td.border-b.border-gray-200.py-2.px-4
+            = link_to "Удалить", cart_item_path(item), method: :delete,
+              class: "bg-red-600 text-white py-1 px-3 rounded-lg hover:bg-red-700"
+
+  %p.font-bold.text-lg.mt-4 Всего:
+  = number_to_currency(@cart_items.sum { |item| item.product.price * item.quantity })
+
+  %div.mt-6
+    = link_to "Оформить заказ", clear_cart_path, method: :delete,
+      class: "bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700"
+    = link_to "Продолжить покупки", products_path,
+      class: "ml-4 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+
+- else
+  %p.text-gray-500.text-lg.mt-4 Корзина пуста.
+  %div.mt-4
+    = link_to "Вернуться к покупкам", products_path,
+      class: "bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700"

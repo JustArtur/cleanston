@@ -1,0 +1,8 @@
+- @products.each do |product|
+  .border.rounded-lg.p-4.shadow-sm.bg-white
+    %h3.text-lg.font-medium= product.name
+    %p.text-gray-600= product.description
+    %p.font-bold.text-indigo-600= number_to_currency(product.price)
+
+    .mt-2.bg-indigo-600.text-white.py-2.px-4.rounded-lg.hover:bg-indigo-700.w-fit
+      = link_to "Добавить в корзину", cart_item_path, data: { turbo_method: :post }

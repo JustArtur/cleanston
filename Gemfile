@@ -65,3 +65,4 @@ end
 gem 'devise'
 gem 'hotwire-rails'
 gem 'tailwindcss-rails'
+gem 'haml-rails'

@@ -20,6 +20,12 @@
           %td.border-b.border-gray-200.py-2.px-4
             = link_to "Удалить", cart_item_path(item), data: { turbo_method: :delete },
               class: "bg-red-600 text-white py-1 px-3 rounded-lg hover:bg-red-700"
+          %td.border-b.border-gray-200.py-2.px-4
+            = link_to "-", update_quantity_cart_item_path(item, change: -1), data: { turbo_method: :patch },
+              class: "bg-red-400 p-2 rounded-lg hover:bg-red-500"
+            = item.quantity
+            = link_to "+", update_quantity_cart_item_path(item, change: 1), data: { turbo_method: :patch },
+              class: "bg-green-500 p-2 rounded-lg hover:bg-green-500"
 
   %p.font-bold.text-lg.mt-4 Всего:
   = number_to_currency(@cart_items.sum { |item| item.product.price * item.quantity })

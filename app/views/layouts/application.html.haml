@@ -8,13 +8,13 @@
     = javascript_include_tag "turbo", type: "module"
   %body.bg-gray-100
     %nav.bg-white.p-4.shadow
-      = link_to "Products", root_path, class: "mr-4"
+      = link_to "Товары", root_path, class: "mr-4"
       - if user_signed_in?
-        = link_to "Cart", cart_items_path, class: "mr-4"
-        = link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "mr-4"
+        = link_to "Корзина", cart_items_path, class: "mr-4"
+        = link_to "Выйти", destroy_user_session_path, data: { turbo_method: :delete }, class: "mr-4"
       - else
-        = link_to "Sign in", new_user_session_path, class: "mr-4"
-        = link_to "Sign up", new_user_registration_path
+        = link_to "Войти", new_user_session_path, class: "mr-4"
+        = link_to "Зарегистрироваться", new_user_registration_path
 
     = render 'layouts/flash'
 

@@ -43,10 +43,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_24_180749) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "cart_id"
+    t.integer "cart_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cart_id"], name: "index_users_on_cart_id"
+    t.index ["cart_item_id"], name: "index_users_on_cart_item_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -54,5 +54,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_24_180749) do
   add_foreign_key "cart_items", "products"
   add_foreign_key "cart_items", "users"
   add_foreign_key "orders", "users"
-  add_foreign_key "users", "carts"
+  add_foreign_key "users", "cart_items"
 end

@@ -33,7 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[8.0]
       # t.datetime :locked_at
 
 
-      t.references :cart, foreign_key: true
+      t.references :cart_items, foreign_key: true
       t.timestamps null: false
     end
 
